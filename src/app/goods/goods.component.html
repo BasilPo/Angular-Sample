@@ -1,0 +1,22 @@
+<main class="section">
+  <section class="container">
+    <div class="columns is-multiline is-variable is-3">
+      <div *ngFor="let item of items; let i=index" class="column is-one-third">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-header-title">{{item.name}}</span>
+            <span class="tag is-white is-medium has-text-danger">{{item.price | currency}}</span>
+          </div>
+          <div class="card-content">
+            <div class="content">{{item.label}}</div>
+          </div>
+          <div class="card-footer">
+            <span class="card-footer-item">
+              <button (click)="addToCart(item)" class="button is-primary is-outlined">Add To Cart</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

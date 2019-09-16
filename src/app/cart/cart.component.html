@@ -1,0 +1,79 @@
+<section class="section">
+  <div class="container is-fluid">
+    <div class="box is-hidden-mobile">
+      <table class="table is-striped is-fullwidth is-narrow">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th class="has-text-centered">Quantity</th>
+            <th class="has-text-right">Price</th>
+            <th class="has-text-right">Sum</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems; let i=index">
+            <td>{{item.goods.id}}</td>
+            <td>{{item.goods.name}}</td>
+            <td class="has-text-centered">{{item.quantity}}</td>
+            <td class="has-text-right">{{item.goods.price | currency}}</td>
+            <td class="has-text-danger has-text-right">{{item.goods.price * item.quantity | currency}}</td>
+            <td class="has-text-centered">
+              <button (click)="removeItem(item)" class="button ">
+                <span class="icon has-text-primary is-large has-text-danger">
+                  <i class="mdi mdi-delete"></i>
+                </span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="has-text-primary is-size-4 has-text-right">Total:</td>
+            <td colspan="2" class="has-text-danger is-size-4 has-text-left">{{getCartTotal() | currency}}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="is-hidden-tablet">
+      <div class="box" *ngFor="let item of cartItems; let i=index">
+        <table class="table is-striped is-fullwidth is-narrow">
+          <tr>
+            <th>Id</th>
+            <td class="has-text-right">{{item.goods.id}}</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td class="has-text-right">{{item.goods.name}}</td>
+          </tr>
+          <tr>
+            <th>Quantity</th>
+            <td class="has-text-right">{{item.quantity}}</td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td class="has-text-right">{{item.goods.price | currency}}</td>
+          </tr>
+          <tr>
+            <th>Sum</th>
+            <td class="has-text-right has-text-danger">{{item.goods.price * item.quantity | currency}}</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="has-text-centered">
+              <button (click)="removeItem(item)" class="button ">
+                <span class="icon has-text-primary is-large has-text-danger">
+                  <i class="mdi mdi-delete"></i>
+                </span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="box">
+        <p class="has-text-primary is-size-4 has-text-right">Total: <span
+            class="has-text-danger">{{getCartTotal() | currency}}</span></p>
+      </div>
+    </div>
+  </div>
+</section>

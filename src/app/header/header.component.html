@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar is-fixed-top is-primary is-transparent" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a [routerLink]="[ '/' ]" class="navbar-item">
+          <span class="has-text-light has-text-weight-bold is-size-4">GOODS</span>
+        </a>
+        <a (click)="toggleNavbarMenu()" [ngClass]="{'is-active': isOnTouchDevice}" role="button" class="navbar-burger"
+          aria-label="menu" aria-expanded="false" data-target="navbarmenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div [ngClass]="{'is-active': isOnTouchDevice}" id="navbarmenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a [routerLink]="[ '/cart']" class="button is-warning is-medium is-rounded">
+              <span class="icon has-text-primary is-large">
+                <i class="mdi mdi-cart-outline"></i>
+              </span>
+              <span class="tag is-rounded is-danger">{{getCartItemsCount()}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
